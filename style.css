@@ -1,5 +1,7 @@
-body, html {
+body,
+html {
     height: 100%;
+    width: 100%;
     margin: 0;
     display: flex;
     justify-content: center;
@@ -9,44 +11,153 @@ body, html {
 }
 
 .timer-container {
+    width: 90%;
     text-align: center;
     background-color: #ffffff;
     padding: 20px;
+    box-sizing: border-box;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .timer {
-    font-size: 48px;
+    font-size: 5em;
     margin-bottom: 20px;
 }
 
-.controls > * {
-    margin: 5px;
-    padding: 10px;
-    font-size: 16px;
+.inputs-container {
+    margin-bottom: 20px;
 }
 
-button {
-    cursor: pointer;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
+.input-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
 }
 
-input {
-    width: 60px;
+.time-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.input-label {
-    margin-top: 10px;
+.time-input input {
+    margin-bottom: 0.25em;
+    /* Space between input and label */
+    text-align: center;
+}
+
+.colon {
+    padding: 0 5px;
+    /* Add padding around the colon for spacing */
+    font-size: 2em;
+    /* Ensures colon is large enough */
+    line-height: 1;
+    /* Adjusts vertical alignment */
+}
+
+.volume-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.volume-control label {
+    margin-right: 10px;
+}
+
+#volumePercent {
+    margin-left: 10px;
+}
+
+.volume-control input[type="range"] {
+    width: 100%;
+    /* ensures the slider doesn't exceed its container */
+    max-width: 300px;
+    /* limits the maximum width of the slider */
 }
 
 .big-start {
     display: block;
-    width: 50%;
-    margin: 20px auto; /* Centers the button and adds space */
-    padding: 15px 0; /* Larger padding */
-    font-size: 20px; /* Larger font size */
+    width: 80%;
+    margin: 20px auto;
+    /* Centers the button and adds space */
+    padding: 15px 0;
+    /* Larger padding */
+    font-size: 1.5em;
+    /* Larger font size */
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: auto; /* allows the button to size according to its content */
+    padding: 15px 30px; /* gives the button a good amount of padding */
+}
+
+.bold-text {
+    color: black;
+    font-weight: bold;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 72px;
+    /* Make the 'X' larger */
+    /* font-weight: bold; */
+    cursor: pointer;
+    padding: 0 10px;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 90%;
+    /* Adjust as needed for proper width */
+    height: 30%;
+    /* New height for the modal */
+    position: relative;
+    /* Needed for absolute positioning of close button */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* Stack items vertically */
+}
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black with opacity */
+    display: flex;
+    /* Enables centering of the modal content */
+    align-items: center;
+    justify-content: center;
 }

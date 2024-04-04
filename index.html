@@ -1,20 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Countdown Timer</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="timer-container">
-        <div id="timer" class="timer">00:00</div>
-        <div class="input-label">Minutes</div>
-        <input type="number" id="minutes" placeholder="Minutes" min="0" value="1">
-        <div class="input-label">Seconds</div>
-        <input type="number" id="seconds" placeholder="Seconds" min="0" value="0">
+        <div id="timer" class="timer">0:00</div>
+        <div class="input-group">
+            <div class="time-input">
+                <input type="number" id="minutes" min="0" value="0">
+                <label for="minutes">Minutes</label>
+            </div>
+            <span class="colon">:</span>
+            <div class="time-input">
+                <input type="number" id="seconds" min="0" value="00" max="59">
+                <label for="seconds">Seconds</label>
+            </div>
+        </div>
+        <div class="volume-control">
+            <label for="volumeSlider">Volume:</label>
+            <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.5">
+            <span id="volumePercent">50%</span>
+        </div>
         <button id="startStopBtn" class="big-start">Start</button>
     </div>
+    <div id="alarmModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <span class="bold-text">Time's up!</span>
+        </div>
+    </div>
     <script src="script.js"></script>
+    
 </body>
+
 </html>
