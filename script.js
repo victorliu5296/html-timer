@@ -3,7 +3,7 @@ const timerDisplay = document.getElementById('timer');
 const startStopButton = document.getElementById('startStopBtn');
 const minutesInput = document.getElementById('minutes');
 const secondsInput = document.getElementById('seconds');
-const audio = new Audio('/alarm-10-seconds-piano.mp3');
+const audio = new Audio('https://github.com/victorliu5296/html-timer/blob/main/alarm-10-seconds-piano.mp3');
 
 const volumeSlider = document.getElementById('volumeSlider');
 audio.volume = volumeSlider.value; // Set initial volume to the slider's value
