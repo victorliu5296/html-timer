@@ -156,7 +156,6 @@ html {
     /* Enable scroll if needed */
     background-color: rgba(0, 0, 0, 0.4);
     /* Black with opacity */
-    display: flex;
     /* Enables centering of the modal content */
     align-items: center;
     justify-content: center;
