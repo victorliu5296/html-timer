@@ -13,6 +13,23 @@ volumeSlider.addEventListener('input', () => {
     audio.volume = volumeSlider.value;
 });
 
+function displayModal() {
+    const modal = document.getElementById('alarmModal');
+    modal.style.display = "flex"; // This will show the modal
+    audio.play(); // This will play the sound
+}
+
+function closeModal() {
+    const modal = document.getElementById('alarmModal');
+    modal.style.display = "none";
+    stopSound();
+}
+
+// Set up the event listener to close the modal on any click
+document.addEventListener('click', function() {
+    closeModal();
+});
+
 function stopSound() {
     audio.pause(); // Stop the sound
     audio.currentTime = 0; // Reset the sound to the start
@@ -31,6 +48,7 @@ function timer(seconds) {
         if (secondsLeft < 0) {
             clearInterval(countdown);
             audio.play(); // Play sound at end
+            displayModal();
             startStopButton.textContent = 'Start'; // Reset button text
             // Stop the sound after 10 seconds
             setTimeout(stopSound, 10000); // 10000 milliseconds = 10 seconds
