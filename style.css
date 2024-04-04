@@ -38,3 +38,15 @@ button {
 input {
     width: 60px;
 }
+
+.input-label {
+    margin-top: 10px;
+}
+
+.big-start {
+    display: block;
+    width: 50%;
+    margin: 20px auto; /* Centers the button and adds space */
+    padding: 15px 0; /* Larger padding */
+    font-size: 20px; /* Larger font size */
+}

@@ -3,6 +3,7 @@ const timerDisplay = document.getElementById('timer');
 const startStopButton = document.getElementById('startStopBtn');
 const minutesInput = document.getElementById('minutes');
 const secondsInput = document.getElementById('seconds');
+const audio = new Audio('alarm-10-seconds-piano.mp3');
 
 function timer(seconds) {
     clearInterval(countdown);
@@ -16,6 +17,7 @@ function timer(seconds) {
 
         if (secondsLeft < 0) {
             clearInterval(countdown);
+            audio.play(); // Add this line to play the sound
             return;
         }
 
