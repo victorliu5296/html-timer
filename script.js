@@ -5,6 +5,19 @@ const minutesInput = document.getElementById('minutes');
 const secondsInput = document.getElementById('seconds');
 const audio = new Audio('alarm-10-seconds-piano.mp3');
 
+const volumeSlider = document.getElementById('volumeSlider');
+audio.volume = volumeSlider.value; // Set initial volume to the slider's value
+
+// Update the audio volume in real-time as the slider moves
+volumeSlider.addEventListener('input', () => {
+    audio.volume = volumeSlider.value;
+});
+
+function stopSound() {
+    audio.pause(); // Stop the sound
+    audio.currentTime = 0; // Reset the sound to the start
+}
+
 function timer(seconds) {
     clearInterval(countdown);
 
@@ -17,7 +30,10 @@ function timer(seconds) {
 
         if (secondsLeft < 0) {
             clearInterval(countdown);
-            audio.play(); // Add this line to play the sound
+            audio.play(); // Play sound at end
+            startStopButton.textContent = 'Start'; // Reset button text
+            // Stop the sound after 10 seconds
+            setTimeout(stopSound, 10000); // 10000 milliseconds = 10 seconds
             return;
         }
 
@@ -32,16 +48,22 @@ function displayTimeLeft(seconds) {
     timerDisplay.textContent = display;
 }
 
-startStopButton.addEventListener('click', () => {
+function startTimer() {
     const minutes = parseInt(minutesInput.value);
     const seconds = parseInt(secondsInput.value);
-    const totalSeconds = minutes * 60 + seconds;
+    const totalSeconds = (minutes * 60) + seconds;
+    timer(totalSeconds);
+}
 
+startStopButton.addEventListener('click', () => {
     if (startStopButton.textContent === 'Start') {
-        timer(totalSeconds);
+        startTimer();
         startStopButton.textContent = 'Stop';
     } else {
         clearInterval(countdown);
-        startStopButton.textContent = 'Start';
+        timerDisplay.textContent = '0:00'; // Reset timer display
+        minutesInput.value = 0; // Reset minutes input
+        secondsInput.value = 0; // Reset seconds input
+        startStopButton.textContent = 'Start'; // Reset button text
     }
 });
