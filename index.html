@@ -24,8 +24,8 @@
         </div>
         <div class="volume-control">
             <label for="volumeSlider">Volume:</label>
-            <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.5">
-            <span id="volumePercent">50%</span>
+            <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.5" oninput="volumePercent.innerText = Math.round(this.value * 100) + '%'">
+            <p id="volumePercent">50%</p>
         </div>
         <button id="startStopBtn" class="big-start">Start</button>
     </div>
