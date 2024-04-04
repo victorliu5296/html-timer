@@ -96,3 +96,68 @@ html {
     width: auto; /* allows the button to size according to its content */
     padding: 15px 30px; /* gives the button a good amount of padding */
 }
+
+.bold-text {
+    color: black;
+    font-weight: bold;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 72px;
+    /* Make the 'X' larger */
+    /* font-weight: bold; */
+    cursor: pointer;
+    padding: 0 10px;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 90%;
+    /* Adjust as needed for proper width */
+    height: 30%;
+    /* New height for the modal */
+    position: relative;
+    /* Needed for absolute positioning of close button */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* Stack items vertically */
+}
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black with opacity */
+    display: flex;
+    /* Enables centering of the modal content */
+    align-items: center;
+    justify-content: center;
+}
