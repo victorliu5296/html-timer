@@ -4,13 +4,38 @@ const startStopButton = document.getElementById('startStopBtn');
 const minutesInput = document.getElementById('minutes');
 const secondsInput = document.getElementById('seconds');
 const audio = new Audio('https://raw.githubusercontent.com/victorliu5296/html-timer/main/alarm-10-seconds-piano.mp3');
-
 const volumeSlider = document.getElementById('volumeSlider');
-audio.volume = volumeSlider.value; // Set initial volume to the slider's value
+
+window.addEventListener('load', () => {
+    // Obtain search parameters from the URL
+    const searchParams = new URLSearchParams(window.location.search);
+    
+    // Get the 'minutes' and 'seconds' parameters from the URL
+    const minutesFromURL = searchParams.get('minutes');
+    const secondsFromURL = searchParams.get('seconds');
+    const volumeFromURL = searchParams.get('volume');
+    
+    // Update the timer and volume if parameters are provided
+    if (minutesFromURL){
+        minutesInput.value = parseInt(minutesFromURL, 10);
+    }
+
+    else if (secondsFromURL) {
+        secondsInput.value = parseInt(secondsFromURL, 10);
+    }
+    
+    if (volumeFromURL) {
+        const volumeValue = Math.min(Math.max(parseFloat(volumeFromURL), 0), 1); // Clamp volume between 0 and 1
+        audio.volume = volumeValue; // Update the audio volume
+        volumeSlider.value = volumeValue; // Update the slider position
+        document.getElementById('volumePercent').textContent = `${Math.round(volumeValue * 100)}%`; // Update the volume label
+    }
+});
 
 // Update the audio volume in real-time as the slider moves
 volumeSlider.addEventListener('input', () => {
     audio.volume = volumeSlider.value;
+    document.getElementById('volumePercent').textContent = `${Math.round(volumeSlider.value * 100)}%`; // Update the volume label
 });
 
 function displayModal() {
